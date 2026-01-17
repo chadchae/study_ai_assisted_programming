@@ -1,0 +1,149 @@
+---
+title: "Chapter Title"
+subtitle: "A Slide for Book Title"
+title-slide-attributes:
+    data-background-image: _resource/school_background.jpg
+    data-background-size: contain
+    data-background-opacity: "0.3"
+# Author
+author:
+  - name: Chad (Chungil Chae)
+    email: cchae@kean.edu
+  - name: Eren ()
+    email: eren@kean.edu
+# Date
+date: today
+date-format: "ddd, D MMMM YYYY"
+# Citation
+bibliography: _resource/reference.bib
+csl: _resource/apa.csl
+# Code
+echo: false
+code-line-numbers: true
+# Format
+format: 
+  revealjs:
+    code-tools: true
+    code-fold: true
+    #toc: true
+    # 슬라이드 메뉴 위치 
+    menu:
+      side: right
+      width: wide
+    
+    # 스크롤뷰
+    scroll-view: 
+      layout: compact
+      snap: proximity
+      progress: true
+      activation-width: 0
+    
+    # 마우스 스크롤 가능여부
+    scrollable: true
+    
+    # 하나씩 보여주기
+    incremental: true
+    
+    # 슬라이드 전체에 작은 글씨 적용
+    smaller: false
+    
+    # 로고와 풋터
+    logo: _resource/chad_tran.png
+    footer: "© 2025 Chad (Chungil Chae). All rights reserved."
+    include-after-body: 
+      - "_resource/all-the-js-code.html"
+    
+    # 프리젠터 노트를 실제 슬라이드 옆에 표시해 주기
+    # show-notes: separate-page
+    
+    # 슬라이드 자동재생
+    #auto-slide: 5000
+    #loop: true
+    
+    # 전자칠판 기능
+    #chalkboard:  # in order to use chalkboard, embed-resource:false
+      #theme: whiteboard
+      #boardmarker-width: 5
+      #buttons: false
+      #multiplex: true
+    
+    # 트렌지션
+    transition: fade # none fade slide convex concave zoom
+    background-transition: fade
+    transition-speed: fast
+    
+    # 슬라이드 레이아웃
+    navigation-mode: vertical #linear vertical grid
+    
+    # 컨프롤 버튼
+    controls-layout: bottom-right
+    controls-tutorial: true
+    
+    # 슬라이드 테마
+    theme: [blood, _resource/styles.scss] #beige blood dark default league moon night serif simple sky solarized # [THEME, _resource/styles.scss]
+    
+    # 프리젠테이션 크기
+    width: 1280
+    height: 720
+    
+    # 모든 리소스를 HTML에 담아서(HTML크기가 커지는 대신에 HTML파일 하나면 쫑)
+    embed-resources: true
+    
+    # 터치 컨트롤 - 스마트폰 사용
+    touch: true
+    controls: true
+    
+    # 기타
+    center-title-slide: true
+    reference-location: document
+    code-block-height: 650px
+    jump-to-slide: true
+    slide-number: true
+    show-slide-number: print
+    preview-links: true
+    slide-tone: false
+    progress: true
+    history: true
+    auto-stretch: false
+    highlight-style: dracula
+    code-line-numbers: true
+    code-overflow: scroll
+    code-block-border-left: false
+    webcam: 
+      toggleKey: "c" # Change the key to toggle the video
+      enabled: false # Enable the video stream directly at startup. Pressing [C] will still allow you to toggle
+      persistent: false # Keep the stream open
+    flashcards: 
+      flipKey: 'r'
+      shuffleKey: 't'
+      showFlipButton: true
+    quiz: 
+      checkKey: 'c'
+      resetKey: 'q'
+      shuffleKey: 't'
+      allowNumberKeys: true
+      disableOnCheck: false
+      disableReset: false
+      shuffleOptions: true
+      defaultCorrect: "Correct!"
+      defaultIncorrect: "Incorrect!"
+      includeScore: true
+revealjs-plugins:
+  - quiz
+  - flashcards
+  - webcam
+
+
+
+---
+
+# Learning Objectives {background-color="black" background-image="_resource/school_background_blured.png" background-size=100%}
+[@textbook].
+
+## SHORT VIDEO INTRODUCTION
+{{< video https://www.youtube.com/watch?v=S2GqQ4gJAH0 width="100%" height="85%">}}
+
+# Contents
+
+
+# Reference 

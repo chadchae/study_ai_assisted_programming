@@ -1,0 +1,626 @@
+---
+title: "How AI Coding Technology Works"
+subtitle: "AI Assisted Programming"
+author:
+  - name: Chad (Chungil Chae)
+    email: cchae@kean.edu
+  - name: Eren ()
+    email: eren@kean.edu
+date: today
+date-format: "ddd, D MMMM YYYY"
+bibliography: _resource/reference.bib
+csl: _resource/apa.csl
+format: 
+  html:
+    theme: simplex
+    toc: true
+    toc_float: TRUE
+    toc-depth: 4
+    toc-location: left
+    toc-title: TOPICS
+    toc-font-size: .5em
+    title-block-banner: true
+    fig-cap-locatio: bottom
+    tbl-cap-location: top
+    fig-align: left
+    reference-location: section
+    footnotes-hover: true
+    link-external-icon: true
+    lightbox: true
+    embed-resources: true
+    code-tools: true
+    code-fold: true
+    highlight-style: dracula
+    code-line-numbers: true
+    code-overflow: scroll
+    code-block-border-left: false
+  docx: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+    header-includes:
+      - \usepackage{kotex}
+      - \usepackage{marginnote}
+      - \usepackage{lineno}
+      - \linenumbers
+      - \usepackage{fancyhdr}
+      - \usepackage{lipsum}
+      - \pagestyle{fancy}
+      - \fancyhead[HL]{Report}
+      - \fancyfoot[CO,CE]{© 2025 Chad (Chungil Chae). All rights reserved.}
+      - \fancyfoot[LE,RO]{\thepage}
+      - \usepackage{eso-pic,graphicx,transparent}
+      - \usepackage{pdflscape}
+      - \usepackage{fontspec}
+      - \setmainfont[Mapping=tex-text]{Times New Roman}
+      - \setsansfont[Mapping=tex-text]{Tahoma}
+      - \newcommand{\blandscape}{\begin{landscape}}
+      - \newcommand{\elandscape}{\end{landscape}}
+#number-sections: true
+#number-depth: 4
+#mainfont: Georgia, serif;
+#editor: visual
+fontsize: .88em
+abstract-title: "Abstract"
+abstract: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+#knitr::opts_knit$set(root.dir= normalizePath('..'), echo = F)
+knitr::opts_chunk$set(error = F, echo = F, warning = F, fig.width=8, fig.height=6)
+
+source("script/main.R")
+```
+
+# Contents
+In this chapter, we’ll crack open the hood of AI-assisted programming tools and take
+a peek at what makes them tick. We’ll briefly wade through the history, take a whirl
+with transformer models and LLMs, and demo the OpenAI Playground. Then we’ll
+get some advice on how to evaluate LLMs.
+Grasping what this powerful technology can and can’t do will pave the way for
+smarter use of AI-assisted programming tools for real-world software projects.
+Key Features
+The market has been buzzing about AI-assisted programming tools such as GitHub
+Copilot, Tabnine, CodiumAI, and Amazon CodeWhisperer. The makers of each
+product attempt to flaunt their own set of bells and whistles. But there’s a good chunk
+of capabilities these tools share. Table 2-1 summarizes some of the main features.
+The list in Table 2-1 isn’t the be-all and end-all; innovation has been moving at a
+rapid clip. Clearly, these systems can give developers a big leg up, in large part by pro‐
+viding code suggestions and context-aware completions. We’ll take a closer look at
+these in the next section.
+
+Code Suggestions and Context-Aware Completions
+Versus Smart Code Completion
+The magic of smart code completion, also known as autocompletion or Microsoft’s
+term IntelliSense, is something many IDEs bring to the table. They lend developers a
+hand by suggesting, filling in, and spotlighting bits of code as the humans hammer
+away at the keyboard. This technology has actually been around since the late 1950s
+with the inception of spellcheckers.
+The breakthrough came in the mid-1990s. Microsoft’s Microsoft Visual Basic 5.0 pro‐
+vided real-time suggestions and completions, with an emphasis on basic syntax and
+function signatures. This greatly improved productivity and reduced errors.
+So you might be wondering: How does something like IntelliSense stack up against
+AI-assisted programming tools? After all, IntelliSense has a smattering of AI and
+machine learning under its belt.
+Yet, there’s an important distinction to be made. AI-assisted tools are powered by
+generative AI. They serve up not just code but a buffet of documentation, planning
+documents, and helpful guides among other things. Thanks to generative AI, these
+tools get the knack of churning out, tweaking, and understanding human-like text
+based on the given context, making them champs at translation, summarization, text
+analytics, topic modeling, and answering queries. Engaging with these tools can
+sometimes be like having a casual chat with your code. With an LLM at their core,
+they can catch the drift of the context and intent from your input.
+
+Compilers Versus AI-Assisted Programming Tools
+To get a better understanding of AI-assisted programming tools, it helps to under‐
+stand what compilers do. Here are the main steps that a compiler performs:
+Lexical analysis (tokenization)
+The compiler acts like a language teacher, breaking your code into tokens.
+Syntax analysis
+Here, the compiler checks how your tokens are grouped. It makes sure your cod‐
+ing has the right structure, not just the right commands.
+Semantic analysis (error checks)
+The compiler ensures that your code makes sense in the context of the program‐
+ming language. It’s not just about correct syntax. It’s about correct meaning, too.
+Intermediate code generation
+This is where your code starts its transformation journey. The compiler translates
+your high-level code into an intermediate form. It’s not quite machine language
+yet, but it’s getting there.
+Code optimization
+In this step, the compiler is like a personal trainer for your code, making it leaner
+and more efficient. It tweaks the intermediate code to run faster and take up less
+space.
+Code generation
+This is the final transformation. The compiler converts the optimized intermedi‐
+ate code into machine code or assembly language that your CPU can understand.
+Linking and loading:
+Sometimes considered a part of the compilation process, linking involves com‐
+bining various pieces of code and libraries into a single executable program.
+Loading is the process of placing the program into memory for execution.
+As for AI-assisted programming tools like Copilot, they’re a different beast. They
+don’t really “get” programming languages like compilers do. This is fine. The com‐
+piler does this. Instead, they use AI to guess and suggest bits of code based on tons of
+code that’s already out there. Since the tools are playing the odds, the suggestions can
+vary a lot. The compiler will then take this code and make it so the machine can run
+the program.
+Sometimes, AI tools might miss something simple like a bracket, which a human
+coder or a compiler would spot in a heartbeat. That’s because the LLMs are based on
+predicting patterns, not a compiler engine. If something’s not common in the
+training, they might not catch it. Also, these tools might get fancy and suggest
+complex code based on the situation. Yes, AI-assisted programming tools can get car‐
+ried away.
+When it comes to spotting errors, AI-assisted programming tools are generally effec‐
+tive but still do not quite match up to a compiler’s ninja-like error-checking skills. Yet
+the tools are still powerful. For example, they can help catch pesky syntax errors—
+missing semicolons, typos in function names, mismatched brackets—and swiftly sug‐
+gest the right fix. They also shine in steering you clear of common coding pitfalls.
+Whether it’s reminding you to properly close a file after opening it or suggesting
+more efficient ways to loop through an array, this tool has your back. And when it
+comes to logical errors, AI-assisted programming tools can be surprisingly insightful.
+They may not solve every complex problem, but they can often propose alternative
+approaches or solutions you might not have considered, nudging your problem-
+solving journey in the right direction.
+This all means that while AI tools are helpful for making coding smoother, they’re not
+a replacement for the thorough checks a compiler does or the keen eye of a human
+coder.
+These drawbacks really underline how crucial it is to blend the smarts of AI-assisted
+tools with the thoroughness of compiler checks and a human touch. After all, you
+want to make sure your code is not just good but spot-on accurate and correct.
+
+Levels of Capability
+In October 2023, Quinn Slack, the CEO and cofounder of Sourcegraph, shared an
+insightful blog post. He dived into the world of AI-assisted programming tools like
+Copilot and came up with an interesting way to think about them, which he called
+“levels of code AI.” His step-by-step framework makes it easier for everyone to get
+what these AI tools can do and check if the boastful claims by the companies selling
+them actually hold water. Figure 2-1 shows the levels of code.
+The first three levels focus on human-led coding, where the developer is the main
+player. Starting off, Level 0 is where there is no AI assistance, which is old-school
+coding. Developers do everything by hand with no AI in sight. It’s the baseline that
+sets the stage for AI to step in later on.
+Then there’s Level 1, code completion. This is where AI starts to chip in and helps to
+whip up single lines or chunks of code based on what’s going on around it. At this
+stage, the developer is still in the driver’s seat, directing the overall program and using
+AI as a shortcut for typical coding tasks.
+
+Level 2, code creation, ramps up the AI. Here, it gets more hands-on and crafts longer
+code sections. The AI can, for example, design APIs and even fix existing code. Of
+course, it’s all happening with a human keeping an eye on things. This level needs the
+AI to get the codebase and the context around it so it can come up with code that’s
+not just correct but also fits in nicely.
+Starting with Level 3, supervised automation, we see a shift toward AI taking the lead
+in coding. In this stage, the AI tackles several tasks to meet broader goals set by
+humans, and it doesn’t need a check-in at every turn. Working at this level is like dele‐
+gating work to a junior developer. The AI at this level is savvy enough to sort out
+bugs, toss in new features, and mesh systems together, reaching out to its human
+counterpart for any clarifications along the way.
+At Level 4, full automation, the AI really steps up its game. Here, it handles complex
+tasks all on its own, without needing humans to give the final thumbs-up on the code.
+Imagine the trust you’d have in a top-notch engineer if you were a CEO or product
+manager. This is the kind of relationship this level aims for. The AI isn’t just reacting.
+It’s proactively keeping an eye on the code, spotting and sorting out issues as they
+come up.
+Finally, there’s Level 5, AI-led full autonomy. This level is a whole different ball game,
+where AI isn’t just following human instructions but setting its own objectives. It’s
+about AI working off a core reward function. Think of it as playing its own game in a
+world where it faces off against other agents. Sure, this level sounds a bit like sci-fi,
+but given how fast things are moving, it’s not too wild to think we might see this level
+become a reality in our lifetimes.
+Right now, tools like Copilot are hovering around Level 3, give or take. Pinning down
+the exact level can be tricky, but Quinn Slack’s framework does a pretty solid job of
+making sense of the technology and its key interactions. And one thing’s for sure: the
+technology isn’t slowing down—it’s moving forward really fast.
+
+Generative AI and Large Language Models (LLMs)
+Using AI-assisted programming tools doesn’t require you to be a whiz at the nitty-
+gritty of generative AI technology. However, having a bird’s-eye view of the technol‐
+ogy can be quite handy. You’ll be able to evaluate the responses, capabilities, and
+limitations of these tools in a sharper way.
+Transparency isn’t just a buzzword here. For a new technology to really catch on, hav‐
+ing a clear picture of what’s under the hood is crucial. Adoption is all about trust. In
+the coding world, reliability and accountability aren’t just fancy extras—they’re the
+bread and butter.
+As we venture into the upcoming sections, we’ll skim the surface of generative AI and
+LLMs to give you a clearer picture.
+Evolution
+The story of generative AI has its roots stretching back several decades, with one of
+its earliest examples being ELIZA, the pioneering chatbot brought to life by Massa‐
+chusetts Institute of Technology professor Joseph Weizenbaum in the mid-60s.
+ELIZA was crafted to mimic chats with a psychotherapist (you can still find it online).
+Sure, it was basic, running on a rule-based algorithm and mostly parroting back user
+input.
+Yet many folks found ELIZA more pleasant to chat with than a real therapist, and
+some were even fooled into thinking they were communicating with a human. This
+curious occurrence, dubbed the “ELIZA effect,” showcased how easily people can
+imagine human-like understanding on the part of a computer program.
+However, the journey of generative AI wasn’t exactly a sprint. The tech gears at its
+core were quite basic, and progress was more of a slow crawl. But come the 2010s, the
+scene hit a turning point. The technology world was now boasting hefty compute
+power, flashy hardware systems like GPUs (graphics processing units), a treasure
+trove of data, and the fine-tuning of sophisticated models like deep learning. And just
+like that, generative AI was back in the fast lane. As it developed, different methods
+emerged:
+Variational autoencoders (VAEs)
+This technology made its debut in 2013, thanks to Diederik P. Kingma and Max
+Welling and their paper “Auto-Encoding Variational Bayes”. Their VAE model
+consists of lower-dimensional latent space from more complex, higher-
+dimensional data, all without supervision. It also includes an encoder–decoder
+structure. When we say higher-dimensional data, we’re talking about data with
+many features, each being a dimension—think of a 28 × 28 pixel image in a 784-
+dimension space. The lower-dimensional latent space is like a compact version of
+this data, holding onto the crucial information while shedding the extra dimen‐
+sions. This is important because it lightens the computational load, fights off the
+curse of dimensionality, and makes the data easier to visualize and interpret. This
+leap from a higher- to a lower-dimensional space is called dimensionality reduc‐
+tion, and it simplifies the data to its bare essentials. Unlike their cousins, the tra‐
+ditional autoencoders, that spit out a single value for each latent attribute, the
+encoder in a VAE gives you a probability distribution. The decoder then picks
+samples from this distribution to rebuild the data. This neat trick of offering a
+range of data in the latent space rather than a single value opens the door to cre‐
+ate new data or images.
+Generative adversarial networks (GANs)
+Introduced by Ian Goodfellow and his colleagues in 2014, generative adversarial
+networks are a class of AI algorithms used in unsupervised machine learning. At
+the heart of GANs are two neural networks, dubbed the generator and the dis‐
+criminator, that go head-to-head in a game-like showdown. The generator churns
+out new data nuggets, while the discriminator plays the judge, distinguishing the
+real from the fake data. With each round, the generator ups its game, crafting
+data that’s eerily similar to real instances. This clever setup has swung open doors
+to new possibilities, leading to AI that creates realistic images, voice recordings,
+and a whole lot more.
+These types of generative AI would be important building blocks for the transformer
+model, a real breakthrough that has made the power of LLMs a reality.
+The Transformer Model
+Before transformers made a splash, the go-to method for natural language processing
+(NLP) was the recurrent neural network (RNN). RNNs were crafted to tackle sequen‐
+tial or time-series data. They would keep tabs on a hidden state to remember bits
+from previous steps in a sequence—a handy feature for things like language model‐
+ing, speech recognition, and sentiment analysis. The RNNs take it step-by-step, pro‐
+cessing one piece of the sequence at a time, updating their hidden state based on the
+current input and what’s been processed before—hence the term recurrent. But they
+hit a snag when faced with long sequences, getting tripped up by the vanishing or
+exploding gradient problem. This made it hard for them to keep track of long-term
+relationships in the data.
+Enter the transformer, flipping the script entirely. Instead of taking the step-by-step
+approach of RNNs, transformers breeze through data in parallel and tap into atten‐
+tion mechanisms to keep tabs on relationships between different bits in the input
+sequence, no matter where they’re placed. This switch in the architectural blueprint
+lets transformers handle both short and long sequences with ease. It also sidesteps the
+gradient woes. Plus, their parallel processing capabilities mesh nicely with sophistica‐
+ted chip architectures like graphics processing units (GPUs) or tensor processing
+units (TPUs).
+Ashish Vaswani and his fellow researchers at Google created the transformer and
+published the core architecture in the pathbreaking paper “Attention Is All You Need”
+in 2017. Figure 2-2 illustrates the main parts of the model.
+The transformer model is like a brilliant linguist, adept at unraveling the intricacies of
+language. Its magic unfolds in two primary stages: encoding and decoding. Each is
+composed of its own set of layers. During the encoding stage, the model reads and
+comprehends the input text similar to how a linguist would understand a sentence in
+a foreign language. Then in the decoding stage, the model generates a new piece of
+text or translation based on the understanding acquired in the encoding stage, much
+like a linguist translating that sentence into your native language.
+At the heart of the transformer is a mechanism called attention, which allows it to
+assess the relevance of each word in a sentence to the other words. It assigns an atten‐
+tion score to each. For example, take the sentence “The cat sat on the mat.” When the
+model focuses on the word sat, the words cat and mat might receive higher attention
+scores due to their direct relationship to the action of sitting.
+One notable feature of this model is the self-attention mechanism. This allows it to
+look at an entire sentence, understand the relationships between words, and retain
+these relationships over long stretches of text. This grants the transformer a form of
+long-term memory by enabling it to focus on all the words or tokens (whole words or
+parts of a word) that have appeared so far, thereby understanding the broader
+context.
+However, despite these capabilities, the transformer initially lacks the ability to recog‐
+nize the order of words in a sentence, which is crucial for understanding the mean‐
+ing. Here, positional encoding steps in. It acts like a GPS to provide the model with the
+information about the position of each word within the sentence and aids in making
+sense of clauses like “The cat chases the mouse” versus “The mouse chases the cat.”
+
+Adding to the sophistication, the transformer employs a multi-head attention mecha‐
+nism. Envision the model having multiple pairs of eyes, each pair examining the sen‐
+tence from a unique angle and focusing on different aspects or relationships between
+the words. For instance, one pair might focus on understanding actions, another on
+identifying characters, and yet another on recognizing locations. This multi-view
+approach enables the transformer to grasp a richer understanding of the text.
+Furthermore, each stage of the transformer encompasses layers of a feedforward neu‐
+ral network, a straightforward network that aids in processing relationships between
+words. This further enhances the understanding and generation of text.
+
+A transformer is in the form of a pretrained model. It has already been trained on an
+enormous amount of data and is ready for use or further fine-tuning. Once pre‐
+trained, the model can be accessed as an API, allowing for its immediate use in vari‐
+ous language-processing tasks. Companies or individuals can rapidly integrate this
+model into their systems, such as AI-assisted programming applications. Moreover,
+the pretrained LLM can be further honed to excel in specialized domains, such as
+medical or legal text analysis, by fine-tuning it on domain-specific data. This elimi‐
+nates the need for developing a complex language model from the ground up, saving
+a substantial amount of time, effort, and resources. The pretrained model, with its
+foundational language understanding, acts as a springboard for the development of
+generative AI applications.
+
+The two main types of transformer systems are generative pretrained transformer
+(GPT) and bidirectional encoder representations from transformers (BERT). GPT is a
+tool from OpenAI that is ideal for creating text, summarizing information, and trans‐
+lating languages. It is based on an autoregressive LLM architecture. This means that it
+crafts text by carefully considering each word based on what it’s already output, much
+like a storyteller building a narrative one word at a time. Its skills come from being
+trained on a colossal amount of text data. GPT uses the decoder for generating
+content.
+BERT, on the other hand, uses an autoencoding approach. This design enables it to
+deeply understand the context of words in a sentence, making it adept at deciphering
+the nuances and meanings of language. Google developed BERT in 2018 as an open
+source project. Since then, many variations and enhancements to the core model have
+emerged.
+As for AI-assisted programming applications, the main type of transformer model is
+GPT. It has been shown to predict and autocomplete code efficiently, based on the
+context provided by the programmer.
+OpenAI Playground
+The OpenAI Playground is a generative AI sandbox that provides access to various
+models developed by OpenAI. It allows for model customization via an intuitive
+graphical interface.
+
+The OpenAI Playground makes it easier to understand the strengths and weaknesses
+of the various LLMs. Moreover, it enables real-time testing and adjustments of mod‐
+els in response to different inputs, like temperature.
+However, OpenAI charges for use of the platform. Fees are based on the number of
+tokens used, as seen in Table 2-2. Keep in mind that prices change periodically. The
+good news is that all changes as of this writing have been reductions in price.
+
+For example, suppose you are using the GPT-4/8K context LLM. You have a prompt
+with 1,000 tokens, and the response to this from the model is 2,000 tokens. Then the
+cost will be 3 cents for the input and 12 cents for the output.
+When you first sign up for an OpenAI account, you will get a $5 credit that can be
+used for the OpenAI Playground. This can be used for calls to the API.
+Tokens
+Let’s take a more detailed look at tokens. OpenAI has a tool called the Tokenizer,
+shown in Figure 2-3 where I have entered the following for analysis:
+
+In the tokenization—which is highlighted with colors—the word ChatGPT is com‐
+posed of three tokens. The breakdown is Chat, G, and PT. The word unbelievable and
+its following exclamation point have two tokens, one for the word and one for the
+punctuation. As for the emoji, it consists of three tokens. Each punctuation mark is a
+token. Spaces are included with an adjacent word.
+The Tokenizer is for GPT-3, GPT-3.5, and GPT-4. Keep in mind that tokenization is
+often different among the LLMs.
+
+Using the Platform
+When you go to the OpenAI Playground, you get access to a dashboard, shown in
+Figure 2-4.
+
+The middle of the screen has the main workflow for the interactions with an LLM:
+System
+This is where you provide some context for the LLM, for example, “You are an
+expert in Python programming.” The system prompt is the first message in a ses‐
+sion and sets the stage for the interaction. Customizing the system prompt allows
+for greater control over how the model behaves in the conversation, which can be
+particularly useful to ensure that it stays within desired parameters or contexts.
+User
+This is the main instruction of the prompt. For example, this is where you can
+ask the LLM to carry out a coding task.
+Add message
+This allows you to have an ongoing chat with the LLM.
+Let’s try an example. Suppose you’re working on a Python project and you’re having
+trouble understanding how to implement the Tkinter library to get user input. You
+can enter the following:
+System message: You are a Python expert specialized in Tkinter.
+User message: I want to create a simple GUI using Tkinter to get a user’s name and age.
+How can I do that?
+The LLM will generate the code listing. But suppose you want to add validation for
+the input. You can press the Add button and enter “How can I ensure the age entered
+is a number and not text?”
+The LLM will respond with the code for this, using a try-except block to convert the
+age input to an integer.
+Granted, this is like using ChatGPT—but with more structure. Also, the real power is
+the ability for customization. You’ll find these features on the right side of the screen:
+Model
+You can select from a variety of models and can even use your own fine-tuned
+LLMs to ensure the model is focused on the unique needs of your coding. You
+can find more information about fine-tuning a model in the OpenAI API docu‐
+mentation.
+Temperature
+This adjusts the randomness or creativity of the generated content. The range of
+values is from 0 to 2. The lower the value, the more deterministic and focused are
+the responses. Table 2-3 shows suggested temperature levels for different types of
+development tasks.
+
+However, if you use a fairly high value for the temperature, the results can be
+nonsensical. Here’s a sample prompt when using a value of 2:
+Prompt: In Python, what are the steps to migrate data from a CSV file to a MySQL
+database?
+
+Now, let’s look at the other features you can adjust:
+Maximum length
+This is the maximum number of tokens to use to generate content. The number
+includes usage for both the prompt and response. The ratio of tokens to content
+depends on the model you use.
+Stop sequence
+This indicates a point at which the LLM should stop creating further text. You
+can specify a particular string or sequence of characters that, when detected in
+the generated text, will signal the model to halt the process.
+Top p
+Also known as nucleus sampling, this technique selects words based on a cumu‐
+lative probability threshold, denoted by p, which can range from 0 to 1. In sim‐
+pler terms, instead of always choosing from the top few most likely next words,
+the model considers a broader or narrower range of possible next words based on
+the specified p-value. A lower p-value results in a smaller, more focused set of
+words to choose from, leading to more predictable and coherent text. A higher p-
+value, on the other hand, allows for a wider set of possible next words, leading to
+more diverse and creative text generation.
+Frequency penalty
+This helps to tackle a common problem with LLMs, which is repetitive phrases
+or sentences. The value ranges from 0 to 2. The higher the value, the less repeti‐
+tion. However, at values greater than 1, text generation can get unpredictable and
+even nonsensical.
+Presence penalty
+This also has a value of 0 to 2. A higher value will allow the LLM to include a
+wider variety of tokens, which means using a more diverse vocabulary or broader
+universe of concepts.
+With the frequency penalty, presence penalty, and top p, OpenAI recommends select‐
+ing one approach to adjust for your task. But don’t shy away from experimentation.
+The path to optimizing LLMs isn’t paved with strict rules, thanks to the intricate
+dance of the complexities involved.
+Evaluating LLMs
+Assessing LLMs is a hefty task. These behemoths are often so opaque that they can
+seem impossible to understand. The competition among AI firms only worsens this.
+It’s become par for the course to see scant details on the datasets these models are
+trained on, the number of parameters used to fine-tune their behavior, and the hard‐
+ware that powers them.
+
+But there is some good news, thanks to some researchers at Stanford. They’ve created
+a scoring system dubbed the Foundation Model Transparency Index to size up the
+openness of LLMs. This yardstick, shaped by a hundred criteria, is a bid to usher
+some clarity into the murky waters of LLM transparency.
+The ranking is based on a percentage scale. Table 2-4 shows the rankings. Unfortu‐
+nately, the results are far from encouraging. No major LLM is close to achieving “ade‐
+quate transparency,” according to the researchers, and the mean score is only 37%.
+
+The flexibility of LLMs to handle various domains and tasks, such as software devel‐
+opment, is a notable advantage. However, it also complicates the evaluation process,
+as it requires domain-specific evaluation metrics and benchmarks to ensure the mod‐
+el’s effectiveness and safety in each particular application.
+Despite all this, there are some metrics to consider when evaluating LLMs:
+BERTScore
+This metric is designed to evaluate text generation models by comparing gener‐
+ated text to reference text using BERT embeddings. Although primarily used for
+natural language text, it can be extended or adapted for code generation tasks,
+especially when the code is annotated or commented in natural language.
+Perplexity
+This is a common metric for evaluating probabilistic models like LLMs. It quan‐
+tifies how well the probability distribution predicted by the model aligns with the
+actual distribution of the data. In the context of code generation, lower perplexity
+values indicate that the model is better at predicting the next token in a sequence
+of code.
+BLEU (bilingual evaluation understudy)
+Originally developed for machine translation, BLEU is also used in code genera‐
+tion to compare the generated code with reference code. It computes n-gram pre‐
+cision scores to quantify the similarity between the generated and reference texts,
+which can help in evaluating the syntactic correctness of the generated code. A
+higher n-gram precision score indicates better agreement between the generated
+and reference text for that specific sequence of n words.
+ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+This is another metric borrowed from NLP that can be used to evaluate code
+generation models. It calculates the overlap of n-grams between the generated
+and reference texts, providing insights into how well the generated code aligns
+with the expected output.
+MBXP (most basic X programming problems)
+This benchmark is designed specifically for evaluating code generation models
+across multiple programming languages. It uses a scalable conversion framework
+to transpile prompts and test cases from original datasets into target languages,
+thereby facilitating a comprehensive multilingual evaluation of code generation
+models.
+HumanEval
+This is a benchmark to evaluate the code generation capabilities of LLMs by
+measuring their functional correctness in synthesizing programs from doc‐
+strings. This benchmark is crucial for the continuous development and enhance‐
+ment of AI models in code generation. While different models display varying
+levels of proficiency on HumanEval, an extended version called HUMANEVAL+
+has been key in identifying previously undetected incorrect code generated by
+popular LLMs.
+Multilingual HumanEval (HumanEval-X)
+This is an extension of the original HumanEval benchmark. Multilingual
+HumanEval evaluates LLMs’ code generation and translation capabilities across
+more than 10 programming languages. It employs a conversion framework to
+transpile prompts and test cases from Python into corresponding data in target
+languages, creating a more comprehensive benchmark for multilingual code gen‐
+eration and translation.
+Another way to evaluate an LLM is to look at the number of parameters—which can
+be in the hundreds of billions. So the more, the better, right? Not necessarily. Evalua‐
+tion should take a more nuanced approach. First of all, the costs of scaling the param‐
+eters can be enormous, in terms of compute power and energy usage. This could
+make an LLM uneconomical for monetizing applications. Next, as the parameter
+counts balloon, so does the complexity of the model, which could potentially lead to
+overfitting. Overfitting occurs when the model learns to perform exceedingly well on
+the training data but fumbles when exposed to unseen data. This dilutes its generali‐
+zation capability.
+Another issue is the need for vast and diverse training datasets to feed the insatiable
+appetite of these models for data. However, obtaining and curating such extensive
+datasets not only is resource intensive but also poses challenges pertaining to data
+privacy and bias. What’s more, the evaluation of these behemoths becomes increas‐
+ingly intricate with the surge in parameters. The evaluation metrics need to be more
+comprehensive and diverse to accurately gauge the model’s performance across a
+myriad of tasks.
+Finally, fine-tuning can be a better way to get more out of models without the need
+for large increases in the parameter size of the underlying LLM.
+
+Types of LLMs
+There are various types of LLMs, and one prominent category is open source LLMs.
+Anyone can use, tweak, or share them. Their transparency means you can see how
+these models tick. Plus, open source LLMs allow developers to collaborate on innova‐
+tion as well as develop add-ons and, of course, fix pesky bugs.
+And the best part? They don’t come with a price tag.
+But open source LLMs are not all rainbows and unicorns. There’s usually no dedica‐
+ted team to swoop in and fix issues or roll out regular updates. So, if you hit a snag,
+you might have to roll up your sleeves and dive into the forums for some help.
+The quality and performance of open source models can sometimes feel like a roll‐
+ercoaster. Then there are the nagging security issues. Since everything is available,
+hackers are more likely to find ways to insert nefarious code. Caution is advised.
+Lastly, when it comes to user guides and documentation, open source LLMs might
+have you wishing for more. The guides can sometimes feel like they were written in
+hieroglyphics.
+Table 2-5 shows some of the top open source LLMs.
+
+Closed-source or proprietary LLMs, on the other hand, are much more secretive.
+They mostly keep their code, training data, and model structures under tight wraps.
+However, the companies that develop these complex systems usually have enormous
+amounts of capital. Table 2-6 shows the capital raised by these firms in 2023.
+
+With such resources, these companies can hire the world’s best data scientists and
+build sophisticated infrastructure. The result is that the LLMs are often state-of-the-
+art in terms of performance. They are also built for scale and the rigorous needs of
+enterprises, such as for security and privacy.
+As for the downsides, there is the problem with trust. How do these models come up
+with their responses? What about hallucinations and bias? Answers to these ques‐
+tions can be lacking in detail.
+Then there is the risk that these mega AI operators will become a monopoly. This
+could mean that a customer would be locked into an ecosystem. Lastly, closed-source
+LLMs might be more prone to stagnation than open source projects, as they might
+not benefit from the diverse input and scrutiny that open source projects usually
+enjoy.
+
+Evaluation of AI-Assisted Programming Tools
+Figuring out which AI-assisted programming tool to go for can be a head-scratcher.
+You’ve got to weigh many factors like its precision, chat features, security, speed, and
+user-friendliness. Sometimes, it boils down to what feels right to work with. But then
+again, your hands might be tied if your employer insists on a specific system.
+To get a sense of what’s hot right now, Stack Overflow’s 2023 Developer Survey is a
+handy resource. Stack Overflow gathered insights from nearly 90,000 coders on the
+most popular tools, which you can see in Table 2-7.
+
+This chart gives you a glimpse of the numerous tools available. When you’re looking
+to pick one, a smart move is to get recommendations from other developers. Plus, it’s
+a good idea to test drive a few yourself. Luckily, most of these tools offer free trials, so
+you can give them a whirl without committing right off the bat.
+Another key aspect to consider is the company’s financial backing. Does it have ven‐
+ture capital funding? Without this, a company might struggle not just to grow but
+also to keep its platform innovative. Already, several AI-assisted programming firms
+have had to pull the plug on their services, and that can really throw a wrench in the
+works for developers. Take Kite, for instance. It was one of the early players in this
+field, starting up in 2014. However, by 2022, the company decided to call it quits on
+the project. The silver lining? It open sourced most of the tool’s codebase.
+
+Conclusion
+In this chapter, we pulled back the curtain on generative AI and LLMs. We got a
+glimpse of some of the fascinating history, such as with ELIZA, and then focused on
+one of the biggest breakthroughs in AI: the transformer model. We also tried out the
+OpenAI Playground and showed how to customize the LLM.
+Some of the key nuggets in this chapter include tokens, the advantages of piggyback‐
+ing on pretrained models, the dos and don’ts of sizing up LLMs, metrics like perplex‐
+ity and BLEU scores, and open source versus proprietary models.
+
+
+
+
+
+
+
+
+
+
+
+
+# Reference 
+

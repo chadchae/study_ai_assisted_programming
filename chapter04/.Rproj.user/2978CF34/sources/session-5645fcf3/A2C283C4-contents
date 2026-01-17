@@ -1,0 +1,152 @@
+---
+title: "Preface"
+subtitle: "AI Assisted Programming: Better Planning, Coding, Testing, and Deployment"
+author:
+  - name: Chad (Chungil Chae)
+    email: cchae@kean.edu
+  - name: Eren ()
+    email: eren@kean.edu
+date: today
+date-format: "ddd, D MMMM YYYY"
+bibliography: _resource/reference.bib
+csl: _resource/apa.csl
+format: 
+  html:
+    theme: simplex
+    toc: true
+    toc_float: TRUE
+    toc-depth: 4
+    toc-location: left
+    toc-title: TOPICS
+    toc-font-size: .5em
+    title-block-banner: true
+    fig-cap-locatio: bottom
+    tbl-cap-location: top
+    fig-align: left
+    reference-location: section
+    footnotes-hover: true
+    link-external-icon: true
+    lightbox: true
+    embed-resources: true
+    code-tools: true
+    code-fold: true
+    highlight-style: dracula
+    code-line-numbers: true
+    code-overflow: scroll
+    code-block-border-left: false
+  docx: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+    header-includes:
+      - \usepackage{kotex}
+      - \usepackage{marginnote}
+      - \usepackage{lineno}
+      - \linenumbers
+      - \usepackage{fancyhdr}
+      - \usepackage{lipsum}
+      - \pagestyle{fancy}
+      - \fancyhead[HL]{Report}
+      - \fancyfoot[CO,CE]{© 2025 Chad (Chungil Chae). All rights reserved.}
+      - \fancyfoot[LE,RO]{\thepage}
+      - \usepackage{eso-pic,graphicx,transparent}
+      - \usepackage{pdflscape}
+      - \usepackage{fontspec}
+      - \setmainfont[Mapping=tex-text]{Times New Roman}
+      - \setsansfont[Mapping=tex-text]{Tahoma}
+      - \newcommand{\blandscape}{\begin{landscape}}
+      - \newcommand{\elandscape}{\end{landscape}}
+#number-sections: true
+#number-depth: 4
+#mainfont: Georgia, serif;
+#editor: visual
+fontsize: .88em
+abstract-title: "Abstract"
+abstract: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+#knitr::opts_knit$set(root.dir= normalizePath('..'), echo = F)
+knitr::opts_chunk$set(error = F, echo = F, warning = F, fig.width=8, fig.height=6)
+
+source("script/main.R")
+```
+
+## Motivation
+- The IDEs didn’t change much, except for syntax highlighting and debugging features.
+- Everything changed dramatically with the arrival of GitHub Copilot and ChatGPT.
+- In natural language, I asked ChatGPT to write code. Or in VS Code, I would type a fragment of a function, and GitHub Copilot would generate a code block. 
+- The real power was that these tools could handle many of the tedious tasks for developers.
+- Turns out, these AI tools are handy for more than just coding. 
+- I began using ChatGPT for 
+  - brainstorming app ideas, 
+  - drafting requirements, 
+  - unit tests. 
+- It didn’t take long for me to be convinced that AI-assisted programming would be one of those must-have skills for programmers. 
+- AI-assisted programming is quickly evolving.
+
+## What's Covered
+- **Chapter 1, “New World for Developers”**: 
+  - How generative AI is changing the game for coders. 
+  - How these AI tools are helping developers think more about the big picture and less about the nitty-gritty of coding. 
+  - The history of programming languages. 
+- **Chapter 2, “How AI Coding Technology Works”**: 
+  - explaining generative AI
+  - why transformer models and large language models are big deals in the programming world. 
+- **Chapter 3, “Prompt Engineering”**: 
+  - Practical tips, like 
+    - dealing with wordy or confusing prompts
+    - deterring AI from making stuff up. 
+  - It breaks down the key parts of a prompt and shows you how to use them effectively.
+- **Chapter 4, “GitHub Copilot”**: 
+  - The core features like creating code with comments, Chat, and using an AI-powered command-line interface. 
+  - Customizing the system for proprietary codebases.
+- **Chapter 5, “Other AI-Assisted Programming Tools”**: 
+  - The other top AI-assisted programming tools
+- **Chapter 6, “ChatGPT and Other General-Purpose LLMs”**:
+  - How to use these tools for tasks like handling regular expressions, starter code, and GitHub Actions.
+- **Chapter 7, “Ideas, Planning, and Requirements”**: 
+  - Using chatbots to kick off software projects. 
+  - This involves topics like 
+    - brainstorming
+    - market research
+    - requirements documents
+    - test-driven development
+- **Chapter 8, “Coding”**: 
+  - Common scenarios for development, whether working with APIs, using modular programming, or refactoring. 
+  - Handling functions and object-oriented programming.
+- **Chapter 9, “Debugging, Testing, and Deployment”**: 
+  - fixing bugs, 
+  - using AI-assisted programming tools for code reviews,
+  - making unit tests, and 
+  - describing pull requests.
+- **Chapter 10, “Takeaways”**: 
+  - This is a wrap-up of the book, emphasizing the main points.
+
+## How This Book Is Different
+- When you give a program certain input, you always get the same output. For ages, this pure deterministic logic was the heart and soul of software. 
+- But when you use AI-assisted programming tools, things get a bit topsy-turvy. 
+  - Getting results is like rolling dice since everything works on probabilities. 
+  - When you prompt an AI tool to whip up some code, and even use the same prompt over multiple tries, you might get different results each time. 
+
+## Who Should Read This Book
+- This book is for any developer, whether you’re just starting out or you’ve been in the game for many years.
+
+## Using Code Examples
+- Supplemental material (code examples, exercises, etc.) is available for download at
+- https://github.com/ttaulli/AI-Assisted-Programming-Book. 
+
+## Permission
+- In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. 
+- Cases that does not require permission
+  - Writing a program that uses several chunks of code from this book does not require permission. 
+  - Answering a question by citing this book and quoting example code does not require permission. 
+- Cases that need permission
+  - Selling or distributing examples from O’Reilly books does require permission. 
+  - Incorporating a significant amount of example code from this book into your product’s documentation does require
+permission. 
+

@@ -1,0 +1,26 @@
+{
+    "id": "DE9F921B",
+    "path": "~/Desktop/Template/template_notebook.qmd",
+    "project_path": "template_notebook.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1768118988982.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "80,0",
+        "scrollLine": "66"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1768119238,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1768119238461,
+    "read_only": false,
+    "read_only_alternatives": []
+}

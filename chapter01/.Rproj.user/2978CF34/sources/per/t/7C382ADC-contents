@@ -1,0 +1,650 @@
+---
+title: "New World for Developers"
+subtitle: "AI Assisted Programming"
+author:
+  - name: Chad (Chungil Chae)
+    email: cchae@kean.edu
+  - name: Eren ()
+    email: eren@kean.edu
+date: today
+date-format: "ddd, D MMMM YYYY"
+bibliography: _resource/reference.bib
+csl: _resource/apa.csl
+format: 
+  html:
+    theme: simplex
+    toc: true
+    toc_float: TRUE
+    toc-depth: 4
+    toc-location: left
+    toc-title: TOPICS
+    toc-font-size: .5em
+    title-block-banner: true
+    fig-cap-locatio: bottom
+    tbl-cap-location: top
+    fig-align: left
+    reference-location: section
+    footnotes-hover: true
+    link-external-icon: true
+    lightbox: true
+    embed-resources: true
+    code-tools: true
+    code-fold: true
+    highlight-style: dracula
+    code-line-numbers: true
+    code-overflow: scroll
+    code-block-border-left: false
+  docx: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+    header-includes:
+      - \usepackage{kotex}
+      - \usepackage{marginnote}
+      - \usepackage{lineno}
+      - \linenumbers
+      - \usepackage{fancyhdr}
+      - \usepackage{lipsum}
+      - \pagestyle{fancy}
+      - \fancyhead[HL]{Report}
+      - \fancyfoot[CO,CE]{© 2025 Chad (Chungil Chae). All rights reserved.}
+      - \fancyfoot[LE,RO]{\thepage}
+      - \usepackage{eso-pic,graphicx,transparent}
+      - \usepackage{pdflscape}
+      - \usepackage{fontspec}
+      - \setmainfont[Mapping=tex-text]{Times New Roman}
+      - \setsansfont[Mapping=tex-text]{Tahoma}
+      - \newcommand{\blandscape}{\begin{landscape}}
+      - \newcommand{\elandscape}{\end{landscape}}
+#number-sections: true
+#number-depth: 4
+#mainfont: Georgia, serif;
+#editor: visual
+fontsize: .88em
+abstract-title: "Abstract"
+abstract: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+#knitr::opts_knit$set(root.dir= normalizePath('..'), echo = F)
+knitr::opts_chunk$set(error = F, echo = F, warning = F, fig.width=8, fig.height=6)
+
+source("script/main.R")
+```
+
+# Contents
+While juggling dense neural network architectures and pixel-wrangling computer
+vision at Stanford from 2011 to 2016, Andrej Karpathy also moonlighted at Google.
+Over there, he tinkered around and whipped up a feature-learning system for You‐
+Tube videos. Then he decided to become a founding member of OpenAI and later the
+senior director of AI at Tesla, where he led a team to create the Autopilot system.
+It’s safe to say he’s one the world’s top coders. He is also a skilled wordsmith with a
+massive Twitter—or X—following of nearly 800,000 followers. When ChatGPT cata‐
+pulted onto the scene, he tweeted:
+The hottest new programming language is English.
+He wasn’t kidding. This wasn’t just a poetic ode to coding but a nod to a future where
+typing out natural language prompts could conjure up computer code in seemingly
+any language. It’s like having a bilingual genie in your computer, ready to transcribe
+your English wishes into code commands.
+Then there came a tweet that echoed the sentiments of many developers:
+Copilot has dramatically accelerated my coding, it’s hard to imagine going back to
+“manual coding”. Still learning to use it but it already writes ~80% of my code, ~80%
+accuracy. I don’t even really code, I prompt. & edit.
+Karpathy was tipping his hat to Microsoft’s GitHub Copilot, a fresh brew of AI-
+assisted programming. But it wouldn’t be long until many other tools sprouted up.
+The pace of innovation was breathtaking.
+Now, for all the coders out there, the landscape might look like a dense jungle. What’s
+this brave new world of AI tools? Where do they dazzle, and where do they fizzle?
+And how do you wade through all this to become a savvy AI-assisted programmer?
+Well, this book will be your guide to help answer these questions—and many more.
+The spotlight will be on harnessing these tools to code not just faster but smarter, and
+with a sprinkle of fun. So, let’s roll up our sleeves and jump into this AI-assisted pro‐
+gramming journey.
+
+Evolution and Revolution
+A key theme of the evolution of programming languages is abstraction. This is a fancy
+way of describing how systems get easier for developers to use. When the tedious
+details are handled in the background, developers can focus on what matters most.
+This has been a driving force of innovation, allowing for breakthroughs like the inter‐
+net, cloud computing, mobile, and AI.
+Figure 1-1 highlights the evolution of abstraction over the decades.
+
+Let’s go into more detail, starting from the 1940s:
+Machine language to assembly language
+At the dawn of the computer age, programmers had to wrestle with 0s and 1s to
+bend machines to their will. But then, assembly language came onto the scene.
+It offered alphanumeric instructions, which made coding easier and less
+error-prone.
+High-level languages
+The 1950s brought us Fortran and COBOL, languages that let programmers code
+using somewhat plain English like DISPLAY, READ, WRITE, and IF/THEN/
+ELSE. A compiler would convert these into the 0s and 1s that a computer could
+understand. At the same time, people without a technical background could gen‐
+erally read the code well enough to understand the workflow. The emergence of
+high-level languages would be a huge catalyst for the computer revolution.
+Procedural programming
+Languages like C and Pascal introduced procedural programming, essentially
+packing complex tasks into neat little boxes called functions. This abstraction
+allowed for reusability and maintainability, and it made managing colossal soft‐
+ware projects less of a Herculean task.
+Object-oriented programming (OOP)
+Some of the stars of this type of computer language include C++ and Java.
+Object-oriented programming brought a whole new level of abstraction, allowing
+programmers to model real-world entities using classes and objects, encapsulat‐
+ing both data and behavior. This promoted modularity and allowed for more
+intuitive problem solving.
+Scripting languages and web development
+Python, Ruby, and JavaScript abstract many of the lower-level tasks associated
+with programming. They offer extensive libraries and built-in data structures,
+simplifying common programming tasks and reducing the amount of code
+needed to accomplish them.
+Machine learning and AI
+With the rise of AI and machine learning, specialized libraries and frameworks
+like TensorFlow and PyTorch have abstracted away many intricate mathematical
+details of programming. This has enabled developers to focus on model architec‐
+ture and training processes.
+AI-assisted programming
+Of course, the latest entrant to this abstraction narrative is AI-assisted program‐
+ming, á la GPT-4 and other massive large language models (LLMs). These are
+like your backstage crew, ready to pitch in with code generation at your
+command.
+Let’s look at a simple example. For this, we’ll use ChatGPT, which has a robust ability
+to gin up code. We will use a prompt to ask what we want the system to do. Suppose
+we give it the following prompt:
+Prompt: In Python, write a program that checks if a given integer is even or odd and
+print the result.
+We get the code listing, which even comes with helpful comments. Then there is also
+an explanation of how the program works. You can press the Copy code button at the
+top right to include the code in your IDE and run it.
+
+Generative AI
+Before we go deeper into how AI-assisted programming tools work, let’s get an over‐
+view of generative AI. This is the foundation of these systems.
+Generative AI is a branch of artificial intelligence (AI), which allows for the creation
+of new and unique content. Figure 1-3 provides a visual of how the different parts
+relate to each other.
+
+AI is the big umbrella: it includes all systems that can pull off tasks with the flair of
+human intelligence. Tucked within AI is machine learning (ML). Instead of marching
+to the beat of explicit instructions, ML systems come up with insights based on heaps
+of data. ML is generally based on complex algorithms, which allow for making pre‐
+dictions or decisions without hardcoding.
+Take a step deeper, and you get deep learning (DL), a tighter slice of ML that rolls
+with neural networks stacked with hidden layers—hence the deep tag. These stacked
+models have shown standout results in areas like image and speech recognition.
+Within the corridors of deep learning, you’ll find generative AI (or GenAI). GenAI
+models create new data that reflects their training data.
+In the innermost circle sits LLMs, such as GPT-4, Gemini, Claude, and LLaMA 2.
+These powerful models—often called “foundation models”—churn out human-esque
+text based on cutting-edge algorithms and training on huge amounts of data.
+
+But generative AI is more than just LLMs. GenAI also has multimodal capabilities,
+meaning the ability to create images, audio, and video.
+In the next chapter, we’ll dive deeper into how generative AI works. But next, let’s
+now take a look at the pros and cons of AI-assisted programming tools.
+The Benefits
+AI-assisted programming tools are crafted to enhance developers’ abilities, enabling
+them to zero in on advanced problem solving and innovations instead of being
+ensnared in monotonous tasks or complex code details. This is why GitHub’s use of
+the word copilot is spot on. It’s about having that reliable buddy in the cockpit, navi‐
+gating through the intricate and often tedious aspects of coding, allowing you to focus
+on what matters.
+In the upcoming sections, we’ll spotlight the benefits and practical applications of
+these powerful systems.
+Minimizing Search
+Developers often find themselves playing digital detectives, hunting down pesky bugs
+or wrapping their heads around cryptic codes. When they bump into a snag, their
+first instinct is to hit up Google or pay a visit to Stack Overflow. A quick search, a
+snippet of code, and voilá, they’re back to their IDE (integrated development
+environment).
+But sometimes this can turn into an ordeal. The discussion on Stack Overflow may
+wind up being a dead end. You search some more—but nothing seems to be on point.
+However, there’s one discussion that somewhat helps, and you do further research on
+some related topics. You even search YouTube for a video. After chewing on the prob‐
+lem for more than 30 minutes, you finally solve it.
+Yes, all developers have experienced this. Interestingly enough, the 2022 Developer
+Survey from Stack Overflow, which included responses from more than 70,000 devel‐
+opers, highlights this frustration. It found that 62% of the respondents spent more
+than 30 minutes a day searching for answers, and 25% spent over an hour a day.
+According to the survey, “For a team of 50 developers, the amount of time spent
+searching for answers/solutions adds up to between 333–651 hours of time lost per
+week across the entire team.”
+Now, what if there was a way to slice through this thicket of time-consuming searches
+and get to the solution pronto? Enter AI-assisted programming, our knight in shining
+algorithm. Research from Microsoft supports this: it shows that more than 90% of
+developers who used GitHub Copilot managed to race through their tasks at a faster
+clip.
+Microsoft even put this to the test in a coder showdown. The company recruited 95
+professional developers and split them into two groups. The task was to write an
+HTTP server in JavaScript. Those who used GitHub Copilot completed the job 55%
+faster than those who did not.
+And it’s not just Microsoft singing praises. McKinsey & Company also conducted a
+research study. More than 40 developers from across the United States and Asia par‐
+ticipated, with varying degrees of experience and backgrounds. Over several weeks,
+they completed three common software tasks: code generation, refactoring, and doc‐
+umentation.
+The results? When it came to documentation for keeping the code neat and tidy, AI-
+assisted tools were the standouts, cutting the time spent by half, and AI tools per‐
+formed nearly the same on drafting new code and refactoring.
+However, for complex tasks, the AI tools didn’t hit the high notes. The time trimmed
+was shy of 10%.
+Interestingly, the research also showed that reducing the time spent did not negatively
+impact the overall quality of the code, as reflected in, for example, bugs, readability,
+and maintainability. In fact, the AI-assisted programming tools provided marginal
+improvements. But this often was due to the fact that developers iterated with the
+tools.
+The McKinsey study provides the following takeaways:
+Easing routine chores
+The tools are great at tackling mundane tasks like autofilling code functions, aid‐
+ing in real-time code completion, and autodocumenting code. By handling these
+tasks, they free up developers to dive into complex business issues and speedily
+deploy software features.
+Producing smoother code drafts
+Staring at a blank canvas can be daunting, but with generative AI tools, develop‐
+ers can nudge the creative process along by fetching code suggestions with a sim‐
+ple prompt, right within their IDE or separately. Many developers found these
+AI-based suggestions invaluable, as they helped the humans overcome the “blank
+screen problem” and get into the coding “zone” with a quicker pace.
+Accelerating tweaks to existing code
+With effective prompts, developers can adapt and improve existing code more
+swiftly. For instance, they can snag code from online libraries, pop it into a
+prompt, and then make iterative requests for AI-finessed adjustments based on
+specified criteria.
+Enhancing developers’ prep for new challenges
+The technology acts like a fast-track introductory course and helps developers
+get acquainted with unfamiliar coding environments or languages. When tack‐
+ling something new, these tools step in like a seasoned buddy, shedding light on
+fresh concepts, dissecting various code bases, and dishing out comprehensive
+guides on framework usage.
+Harnessing multiple tools
+The research indicates that bringing multiple tools into play is more effective.
+Picture this: a developer swings one tool for prompts or chats, and another tool
+jumps in as part of the codebase, dishing out autocomplete options and sugges‐
+tions. Developers found the first tool to be a whiz at fielding queries during code
+refactoring, thanks to its conversational finesse. On the flip side, the second tool
+showed effectiveness in conjuring up new code that was integrated smoothly with
+the development environment. When these AI tools teamed up for a task, devel‐
+opers saw a time efficiency surge of 1.5 to 2.5 times.
+
+Your Advisor
+With ChatGPT, you can ask for advice on many types of development activities.
+Here’s a prompt:
+Prompt: Please provide detailed tips and best practices for minimizing search time and
+enhancing productivity when programming. Include strategies related to code organi‐
+zation, documentation, tools, and mindset.
+Figure 1-4 shows the response.
+ChatGPT provides three main areas to consider. It recommends using a modular
+design, maintaining consistent naming, and organizing files logically. It also advises
+prioritizing clear documentation with comments, docstrings, and READMEs.
+ChatGPT then goes on to mention using the search functions of an IDE, using tools
+like Git, and bookmarking key resources.
+
+IDE Integration
+Seamless integration with the IDE is crucial for AI-assisted programming. It keeps
+the momentum of the development process going strong, without the heavy lifting of
+mastering a new platform. This means less time scrambling up the learning curve and
+more time coding and—let’s not forget—less switching between different platforms
+or tools means less friction and makes for a smoother coding journey.
+Then there is the advantage of real-time feedback. As developers knit together or
+tweak code, integrated tools are right there to spotlight errors, offer up corrections, or
+suggest a better way to get things done. This instantaneous back-and-forth of writing,
+feedback, and tweaking is like having a friendly coach by your side. You’ll be guided
+toward cleaner, more efficient code without the hassle of manual reviews or external
+checks.
+AI-assisted systems can also amp up an IDE by tuning into the broader coding narra‐
+tive. The AI gets the gist of variable types, method signatures, and even the project’s
+structural blueprint to churn out relevant code suggestions. It’s not just about spitting
+out code, though.
+Table 1-1 introduces some of the top AI-assisted programming tools and the IDEs
+they support.
+
+Reflecting Your Codebase
+Certain AI-assisted programming tools are tailored to mesh well with specific devel‐
+opment environments. Developers have the leeway to fine-tune them, allowing the
+tool to understand a project’s internal libraries, APIs, best practices, and architectural
+blueprints. This ensures that the suggestions thrown your way not only are techni‐
+cally solid but also dovetail with your project’s unique needs.
+This customization helps to align the generated code suggestions with your organiza‐
+tion’s established coding standards, quality markers, and security protocols. The focus
+on fostering high-quality code means that teams can avoid stumbling into deprecated
+or undesirable code snippets.
+Moreover, this tailored approach is a big benefit for newcomers to a development
+team. Traditionally, getting them acclimated to a new codebase requires a hefty time
+investment as they may need months of exploring code, reviewing documentation,
+and learning the ropes of coding protocols. However, an AI-assisted programming
+tool can significantly shave time off this learning curve.
+
+Code Integrity
+Code integrity is a hallmark of sound software development. It highlights the sturdi‐
+ness and trustworthiness of the source code in executing its intended function. Think
+of it as a lens through which the completeness, accuracy, consistency, and fortification
+of the code are examined. A hiccup in code integrity lays out a welcome mat for bugs
+and potential security blind spots, which, in turn, could usher in system crashes and
+data breaches.
+The various factors that engender code integrity include its precision, thoroughness,
+uniformity, and security provisions as well as the ease with which it can be main‐
+tained. Developers can ramp up code integrity through a medley of approaches like
+unit and integration testing, peer code reviews, static code analysis, and stringent
+security assessments.
+It’s worth noting that a growing roster of AI-assisted programming tools are rolling
+out features aimed at bolstering code integrity. They delve into the finer points of the
+code, paving the way for the generation of pertinent and sharp unit tests and edge
+cases.
+Some of these tools come with “fix-it” recommendation features. These are vetted in
+advance to ensure they don’t lead to new problems before they land in front of devel‐
+opers. Then developers can review and assimilate these suggestions right within their
+IDE.
+An added perk of these tools is their ability to swiftly analyze pull requests and spin
+up succinct summaries of code alterations. They also have a knack for automating the
+chore of generating release notes, which comes in handy for documenting the evolu‐
+tion in software versions.
+
+AI-Powered Documentation Generator
+Documentation is the unsung hero in the software development process. It helps to
+ensure that the codebase remains legible, maintainable, and scalable, especially as
+teams morph and projects bloat in complexity. But let’s face it, creating and refreshing
+this documentation often feels like a trek through a bureaucratic bog—it can be a
+time-guzzler and, occasionally, gets shoved to the backburner.
+Now, cue the entrance of AI-assisted programming tools. These digital scribes can
+whip up extensive documentation in a fraction of the time—and with a hefty dose of
+quality and clarity to boot. This is done by leveraging the power of LLMs, which are
+particularly strong at dealing with language.
+
+Modernization
+Marc Andreessen’s 2011 bold statement in the Wall Street Journal, “Software Is Eating
+the World”, has aged like a fine wine. Andreessen, known for his knack for spotting
+tech trends from miles away and his stellar track record as a successful entrepreneur
+and venture capitalist, pointed out a ripe moment in tech history.
+He underlined how the infrastructure had come of age and primed global industries
+for a metamorphosis. The rise of cloud platforms like Amazon Web Services and the
+widespread growth of broadband internet were game changers. They had knocked
+down the traditional hurdles of server costs and network know-how. This had cleared
+the stage for disruptors like Uber, Netflix, and a slew of social media platforms to
+rewrite the rulebook of their respective industries.
+When we fast forward from Andreessen’s insightful piece, we see that the innovation
+express has only picked up steam. However, it has also brought along a threat of dis‐
+ruption, especially for large corporations. Many of these behemoths are anchored to
+legacy systems that are not only pricey but also a gamble to modernize. Their hier‐
+archical setup can interpose speed bumps in decision making, and their expansive
+scale adds layers of complexity to embracing change. Plus, their workforce might not
+always be on the same page with the latest tech innovations.
+Enter IBM, eyeing this scenario as a goldmine of opportunity and channeling its hefty
+resources to craft AI-assisted programming tools for its customers. In October 2023,
+it unveiled the watsonx Code Assistant for Z. This system can translate COBOL to
+Java on mainframe systems, with the code output elegantly object oriented.
+IBM’s Watsonx.ai model understands 115 coding languages based on 1.5 trillion
+tokens. The model has about 20 billion parameters. This is one of the largest AI sys‐
+tems for code development.
+The fact is that there are hundreds of billions of lines of COBOL. But migrating this
+language to modern ones is no easy feat. It’s common for the COBOL to be decades
+old and have little or no documentation. If the conversion is not handled properly,
+the consequences could be severe. Keep in mind that much of the world’s credit card
+processing is handled with mainframes. The same goes for Uncle Sam’s system for
+handling school loans.
+Unfortunately, there are many examples of failed migration projects. Consider the
+California Department of Motor Vehicles, which, despite pouring $208 million into
+the effort, had to pull the plug within a few years. Ouch.
+Given the high stakes, mainframe developers generally earn higher salaries. But com‐
+panies still are challenged in recruiting talent. Younger developers are trained on
+modern languages and perceive mainframe development as a dead end. In the mean‐
+time, a growing number of seasoned mainframe developers are retiring.
+IBM realized that AI is essential to solve this massive problem. It’s true that code
+transpilers or translators have been around for decades. In fact, they have often been
+used for mainframe projects. However, what they have mostly been doing is taking
+COBOL’s spaghetti code, giving it a quick translation, and, well, you have Java spa‐
+ghetti code. It’s a modest facelift with barely a hint of improvement or innovation.
+The Java code still needs a good amount of elbow grease, explaining why many
+projects stumbled or flat-out face-planted.
+But by using generative AI, IBM says that it has been able to improve the results of a
+project by as much as tenfold.
+Other companies are exploring this modernization opportunity. Thomas Dohmke,
+who is the CEO of GitHub, posted: “COBOL still running on main frames is a much
+bigger societal problem than we think.” In an interview with Fortune, he noted that he
+had heard more about COBOL in 2023 than during the past three decades. He also
+said that companies have been asking how to use GitHub Copilot for their migration
+projects.
+Keep in mind that ChatGPT is also proficient with legacy programming languages.
+Table 1-2 shows which languages it supports.
+
+To see how AI-assisted programming can help with legacy languages, let’s suppose
+you need to work on the following code snippet:
+
+You do not know what language it is or how it works. The syntax does not lend itself
+to an intuitive understanding of the workflow.
+Now let’s say you go to ChatGPT and enter the following:
+Prompt: What language is this written in? What does this code snippet do? Also,
+explain how it works
+
+ChatGPT accurately identifies this as Fortran code. It also explains that the code
+defines a module named ComplexModule, which contains a derived type ComplexType
+for representing complex numbers, along with an overloaded addition operator + for
+adding two complex numbers together. Then there is a step-by-step explanation of
+the code.
+
+Drawbacks
+Now let’s take a look at the not-so-rosy aspects of AI-assisted programming tools.
+Like any fledgling technology—hey, even the first iPhone was a bit clunky—AI comes
+with its share of hiccups, issues, and hurdles. The path of innovation is littered with
+room for polish and fine-tuning.
+Let’s take a look at some of the drawbacks.
+Hallucinations
+For LLMs, hallucinations are instances in which the model outputs data that appears
+accurate but is factually incorrect or not grounded in the input data on which the
+model was trained. This can pose a significant challenge for software development.
+Hallucinations can lead to inaccurate code suggestions, generate misleading docu‐
+mentation, and create erroneous testing scenarios. Additionally, they can render
+debugging inefficient, mislead beginners, and potentially erode trust in AI tools.
+On a positive note, there has been notable progress in reducing the occurrence of hal‐
+lucinations. A substantial amount of academic research has been dedicated to this
+issue, and AI companies have been employing effective strategies like reinforcement
+learning from human feedback (RLHF) to mitigate this problem.
+However, given the intrinsic complexity of LLMs and the enormous amount of data
+they are based on, completely eradicating hallucinations appears to be a tall order—if
+not impossible.
+Another aspect to consider is that certain programming languages exhibit higher
+accuracy rates when AI-assisted tools are used. Languages such as Python, JavaScript,
+TypeScript, and Go tend to have better performance in this regard. This is attributed
+to these languages being well represented in public repositories and thus providing a
+richer dataset for the AI to learn from. The better trained AI, in turn, offers more
+accurate and robust suggestions.
+Intellectual Property
+Matthew Butterick boasts a diverse background, embodying roles as a programmer,
+designer, and lawyer, with a particular penchant for typography. His journey has seen
+him authoring books on typography, designing fonts, and crafting programs aimed at
+document editing and layout. However, his encounter with GitHub Copilot in June
+2022 didn’t spark joy. Rather, it spurred him to pen a blog post titled “This Copilot Is
+Stupid and Wants to Kill Me”.
+His discontent didn’t end with blogging. It quickly escalated to launching a class
+action lawsuit against Microsoft, GitHub, and OpenAI. The bone of contention was
+
+an alleged breach of GitHub’s terms of service and privacy policies, with a potential
+extension to copyright infringement charges.
+This legal tangle underscores a broader gray area concerning intellectual property
+rights with respect to code engineered from AI-assisted programming tools. Given
+that the output is a cocktail of countless lines of preexisting code, the question of
+ownership is a big question mark.
+One argument is based on the idea of “fair use.” However, this legal doctrine is murky
+and does not extend a clear pathway for AI-generated content. To resolve this matter,
+there will likely need to be federal legislation or a Supreme Court ruling.
+In the meantime, Microsoft has maneuvered to build a legal firewall for GitHub
+Copilot customers. It has pledged to defend users against legal claims, granted certain
+prerequisites are satisfied.
+Adding another layer of the legal quagmire is the intersection of AI-assisted pro‐
+gramming and open source software methods. Copyleft licenses, like the General
+Public License (GPL) versions 2 and 3, require that any derivative work use the origi‐
+nal code’s license terms. This helps to promote a stream of innovation. Yet, it could
+spell trouble for developers, because it could potentially strip them of the rights to
+shield their application’s intellectual property—or even require that they make their
+entire codebase open source.
+Privacy
+The use of AI-assisted programming tools, often housed in the cloud, begs many data
+privacy and confidentiality questions. How is the data safeguarded within the com‐
+pany? Is there a chance it might be used as training data?
+The clarity of the answers might vary from one vendor to another. Thus, some devel‐
+opers may opt to steer clear of AI-assisted programming tools altogether.
+This has been the approach of Anthony Scodary, the cofounder and cohead of engi‐
+neering at Gridspace. This enterprise, with roots tracing back to Stanford University,
+develops voice bots adept at navigating complex phone conversations. Their techno‐
+logical foundation rests on speech recognition, speech synthesis, LLMs, and dialog
+systems.
+Rather than hitching a ride on existing AI-assisted programming platforms, Grid‐
+space chose the road less traveled. It engineered its own AI-assisted programming
+platform, which is based on Docker services within a Kubernetes cluster. Deployed as
+an IDE plugin, this bespoke system is fine-tuned for its own codebase. “This has
+allowed us to avoid sending our IP and data to other companies,” he said. “It has also
+meant that we have a model that is smaller, more efficient, and specialized to our
+style.”
+
+This is not to imply that this is the best approach. Each organization has its own
+views and preferred methods. But when it comes to evaluating AI-assisted program‐
+ming, it’s important to understand the privacy implications.
+Security
+In a research paper entitled “Security Weaknesses of Copilot Generated Code in Git‐
+Hub”, authors Yujia Fu et al. highlighted the security issues with GitHub Copilot.
+They scrutinized 435 AI-generated code snippets from projects on GitHub, and
+35.8% had Common Weakness Enumeration (CWE) instances.
+These weren’t limited to just one programming language. They were multilingual
+missteps spanning 42 different CWE categories. Three of these categories were the
+usual suspects—OS Command Injection, Use of Insufficiently Random Values, and
+Improper Check or Handling of Exceptional Conditions. But here’s the kicker: 11 of
+these CWEs had the dubious honor of making it to the 2022 CWE Top 25 list.
+This is not to imply that AI-assisted programming tools are a huge security risk. Far
+from it. The fact is that vendors are continuing to work on ways to improve the
+guardrails. However, as with any code, a solid dose of security mindfulness is the
+name of the game.
+Training Data
+The training data for LLMs of AI-assisted programming tools may have notable gaps,
+which can affect the performance and usefulness of these tools in real-world scenar‐
+ios. Let’s break down some of these:
+Representation gaps
+If certain areas of a programming language or library are not well represented—
+or are nowhere to be seen—in open source projects, the AI may lack enough
+knowledge about them, leading to less accurate suggestions. The quality of the
+AI’s output depends heavily on the quality and scope of the training data.
+Quality inconsistency
+To borrow a movie analogy, the open source code in an LLM is a bit like a box of
+chocolates—you never know what you’re gonna get. Some projects are the crème
+de la crème, while others are...let’s say, the burnt toast of the code world. This
+mishmash can lead to our AI-assisted programming being inconsistent in the
+quality of suggestions it throws your way.
+Knowledge cutoff date
+LLMs have a cutoff date on their training, so in a way they are like a snapshot in
+time. This poses challenges when there are new releases, updates, or deprecations
+in programming languages or libraries.
+
+Generalization gap
+The generalization gap, the difference between the AI’s performance on the train‐
+ing data and unseen data, can also pose challenges. Of course, the closer the per‐
+formance of the two, the better. This is the conclusion of a research paper by Rie
+Johnson and Tong Zhang entitled “Inconsistency, Instability, and Generalization
+Gap of Deep Neural Network Training”.
+Contextual understanding
+AI can give you suggestions based on what it has seen before. But if it hasn’t seen
+a scenario quite like yours, it might miss the mark. This is why it’s important not
+to make assumptions when creating prompts.
+Bias
+Developers often don’t have a solid grasp of AI ethics, likely because this topic isn’t
+usually part of computer science courses or intensive bootcamp programs. This gap
+in understanding can lead to algorithms unintentionally applying biases and the
+potential misuse of data.
+This issue carries over to AI-assisted programming tools as well. They can uninten‐
+tionally perpetuate the biases present in the data they were trained on. For example, if
+asked to create a list of names, they might mainly suggest English names due to the
+heavy presence of English-centric datasets in their training datasets. This bias can
+sometimes lead to harmful or inappropriate outputs. There was an instance where,
+when given the prompt “def race(x):”, the AI filled in a limited and fixed set of race
+categories. In another troubling case, when tasked with writing code comments for
+the prompt “Islam,” the AI was found to access words like terrorist and violent more
+frequently than when other religious groups were mentioned.
+A New Way for Developers
+The McKinsey study suggests that the dawn of AI-assisted programming tools is
+likely to change how we approach software development. According to the authors,
+success might hinge on good training, emphasizing best practices and diving into
+hands-on exercises on things like prompt engineering, coding standards, and quality.
+It’s also smart to shine a light on the risks associated with generative AI.
+For newbie developers, especially those with less than a year of experience under their
+belts, it’s a good idea to dive into extra coursework that covers the basic principles of
+programming to ramp up productivity.
+As developers fold these tools into their daily routine, it’s vital to keep the skill-
+building momentum going with some guidance from the seasoned pros on the team
+and engagement in community activities. This could mean hanging out in dedicated
+online forums or having regular team huddles to share practical examples. Such
+actions can foster a culture of continuous learning, spread the word on best practices
+across the board, and help spot issues early on.
+With the uptick in developer productivity, managers might want to stir the pot a bit
+when it comes to roles, zeroing in on tasks that pack more value. Upskilling will be on
+the menu, too, to fill in any existing gaps.
+Sure, these pointers aren’t gospel. The realm of AI-assisted programming is still
+pretty fresh and is changing at a brisk pace. Above all, being ready to roll with the
+punches is key.
+
+Career
+While there’s no hard proof that using AI-assisted programming will boost your
+career outlook, a handful of signs suggest that this expertise might become a hot
+ticket in the job market:
+Job listings
+The job boards on sites like Indeed are starting to buzz with more listings seeking
+candidates with experience in AI-assisted programming tools. The call is out for
+all ranks, from junior developers to the senior hotshots.
+Productivity boosts
+AI-assisted programming tools are turning heads because they’re improving pro‐
+ductivity without sacrificing quality. For a developer, this could be a way to move
+up the ranks in an organization.
+Thumbs-ups from developers
+The chatter among developers is that AI-assisted programming tools are catching
+on. For example, GitHub Copilot is boasting a strong rating of 4.5 out of 5 stars
+on G2.com, an independent software review site.
+10x Developer?
+The 10x developer has the power of 10 programmers. They’re the Usain Bolt of cod‐
+ing, zipping through problems and churning out solutions before you can say “bug
+fix.”
+So you might be thinking: Could I become a 10x developer with the help of AI-
+assisted programming tools? Well, sorry to say, but probably not. While these tech‐
+nologies can make a significant difference, improvements are usually not in orders of
+magnitude.
+Besides, the concept of a 10x developer can stir up stereotypes and biases, making the
+tech scene feel like an exclusive club. Not to mention, the pressure to be this super
+
+coder could lead you straight into the arms of burnout. So while being a 10x devel‐
+oper might sound great, remember it’s probably closer to a fantasy.
+Skills of the Developer
+According to the McKinsey study, the effectiveness of AI-assisted development tools
+often depends on the expertise of the developer. Here are some of the considerations:
+Fixing errors
+Even though generative AI can be your trusty sidekick, it can goof up too. It falls
+upon the developer’s shoulders to spot and fix these blunders. Some developers
+have found themselves playing a loop of corrections with the AI to get to a sweet
+spot of accuracy, while others have had to spoon-feed the tool to get it to debug
+accurately. This can certainly be time-consuming. But a veteran developer will
+know how to avoid going down the rabbit holes.
+Getting the office vibes
+AI-assisted programming tools are fairly solid when it comes to coding but might
+miss the beat when dealing with the unique flavor of individual projects or com‐
+pany quirks. Again, this is where veteran developers are key. They’ll know how to
+guide these tools to get the results that best align with organizational goals, per‐
+formance targets, and security.
+Tackling the tough stuff
+Assisted AI-programming tools are great with tasks like polishing code, but toss
+in some complex challenges like blending different coding frameworks, and the
+AI might just trip over itself. In these moments, it’s the experienced developers
+who have to roll up their sleeves.
+
+Conclusion
+AI-assisted programming tools are certainly the shiny toys in the software creation
+sandbox. As this technology keeps marching forward, these systems will crank up
+efficiency, handle boring tasks, and let developers dive into the areas that are most
+important, like high-level problem solving.
+But there are downsides—tangled intellectual property issues, maze of open source
+software licensing, potential for bias, and security risks to name a few.
+For the most part, these tools are your virtual assistants, not a replacement for your
+knowledge, skill, and experience. At the same time, while they might not be superher‐
+oes, they’re shaping up to be powerful additions to the developer’s toolkit.
+
+
+
+# Reference 
+

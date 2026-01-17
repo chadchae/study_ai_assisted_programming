@@ -1,0 +1,239 @@
+[슬라이드 내용 핏 맞추기]
+:::{.r-fit-text}
+
+:::
+
+[타이틀 없는 슬라이드]
+# {background-color="white" background-image="_resource/chad_tran.png" background-size="300px" background-repeat="repeat"} 
+
+[컬럼]
+:::: {.columns}
+
+::: {.column width="50%"}
+Content1
+:::
+
+::: {.column width="50%"}
+Content2
+:::
+
+::::
+
+[작은 폰트 사이즈 슬라이드]
+## Slide Title {.smaller}
+Slide Contents
+
+
+
+[프리젠트 노트]
+::: {.notes}
+
+:::
+
+[콜아웃 노트] # note warning important tip caution  # default simple minimal
+::: {.callout-note collapse="false" callout-appearance: default icon=true}
+## TITLE
+CONTENTS
+:::
+
+[텝셋]
+::: {.panel-tabset}
+
+### Tab A
+
+Content for `Tab A`
+
+### Tab B
+
+Content for `Tab B`
+
+:::
+
+
+[슬라이드 백그라운드 - 컬러]
+## Slide Title {background-color="aquamarine"}
+[슬라이드 백그라운드 - 그리디언트]
+## Slide Title {background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)"}
+## Slide Title {background-gradient="radial-gradient(#283b95, #17b2c3)"}
+[슬라이드 백그라운드 - 이미지]
+## Slide Title {background-color="black" background-image="https://placekitten.com/100/100" background-size="100px" background-repeat="repeat"}
+[슬라이드 백그라운드 - 비디오]
+## Slide Title {background-video="video.mp4" background-video-loop="true" background-video-muted="true"}
+[슬라이드 백그라운드 - 컬러, 이미지 타이틀없이]
+## {background-color="aquamarine"}
+## {background-color="black" background-image="https://placekitten.com/100/100" background-size="100px" background-repeat="repeat"}
+
+::: footer
+You can also include code or other content prior to the question.
+:::
+
+::: aside
+Some additional commentary of more peripheral interest.
+:::
+
+
+[슬라이드 옵션]
+## Slide Title {visibility="hidden"}
+
+## Slide 3 {visibility="uncounted"}
+
+## No footer {footer=false}
+
+[이미지 위치 절대위치]
+![](image1.png){.absolute top=200 left=0 width="350" height="300"}
+
+![](image2.png){.absolute top=50 right=50 width="450" height="250"}
+
+![](image3.png){.absolute bottom=0 right=50 width="300" height="300"}
+
+
+[이미지 위치 쌓아올리기]
+::: {.r-stack}
+![](image1.png){.fragment width="450" height="300"}
+:::
+
+[이미지 늘리기]
+![](image.png){.r-stretch}
+![](image2.png){.fragment width="300" height="450"}
+
+![](image3.png){.fragment width="400" height="400"}
+
+
+
+![](image.png){.nostretch fig-align="center" width="800px"}
+
+
+[Fragments]
+::: {.fragment}
+
+:::
+
+::: {.fragment .fade-out}
+
+:::
+
+::: {.fragment .highlight-red}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+:::
+
+::: {.fragment .fade-up}
+
+:::
+
+::: {.fragment .custom .blur}
+
+:::
+
+::: {.fragment .custom .blur}
+
+:::
+
+[Incremental]
+::: {.incremental}
+
+:::
+
+::: {.nonincremental}
+
+:::
+
+## Slide Title {.smaller}
+
+## Slide Title {.scrollable}
+
+::: {.content-hidden when-format="html"}
+
+Will not appear in HTML.
+
+:::
+
+::: {.content-hidden unless-format="pdf"}
+
+Will only appear in PDF.
+
+:::
+
+::: {.content-visible when-format="html"}
+
+Will only appear in HTML.
+
+:::
+
+```{.python .content-visible when-format="html"}
+# code shown only in HTML
+2+2
+```
+
+::: {.content-visible when-format="html" unless-format="revealjs"}
+
+Will only appear in HTML and not in Reveal.js, but actually it appears.
+
+:::
+
+::: {.content-visible when-format="revealjs"}
+
+Will only appear in Reveal.js and not in HTML or other formats.
+
+:::
+
+{{< include _content.qmd >}}
+
+# with video {data-video="small top-right"} big small top-left top-right bottom-left bottom-right
+
+```{python}
+#| eval: false
+#| echo: true
+#| code-fold: false
+#| output-location: column # fragment slide column column-fragment
+
+```
+
+```{.python code-line-numbers="7,9"} #6-9. |6|9
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+```{r}
+#| label: fig-size-scatter
+ggplot(penguins, aes(body_mass_g, flipper_length_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = colors) +
+  theme_minimal()
+```
+
+{{< embed penguins.qmd#fig-size-scatter >}}
+
+```{r}
+#| label: fig-bill-marginal
+#| fig-cap: "Marginal distributions of bill dimensions"
+#| fig-subcap: 
+#|   - "Gentoo penguins tend to have thinner bills,"
+#|   - "and Adelie penguins tend to have shorter bills."
+#| fig-alt:
+#|   - "Density plot of bill depth by species."
+#|   - "Density plot of bill length by species."
+#| layout-ncol: 2
+
+sns.displot(penguins, 
+            x = "bill_depth_mm", 
+            hue = "species", 
+            kind = "kde", fill = True, aspect = 2, height = 3)
+plt.show()
+sns.displot(penguins, 
+            x = "bill_length_mm", 
+            hue = "species", 
+            kind = "kde", fill = True, aspect = 2, height = 3)
+plt.show()
+```
